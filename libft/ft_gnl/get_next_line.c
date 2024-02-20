@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:06:43 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 19:48:46 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:01:55 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	*get_readed(int fd, char *store)
 		if (btrd > 0)
 		{
 			tmp[btrd] = '\0';
-			store = ft_strjoin(store, tmp);
+			store = ft_strjoin_s(store, tmp);
 			if (!store)
 				return (gnl_free(store, tmp));
 		}
