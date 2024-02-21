@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:29:20 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/14 17:44:50 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:33:59 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ char	*ft_strinter(const char *str, const char *inter, size_t pos)
 		return (NULL);
 	join = ft_strfill(str, join, pos);
 	join = ft_strnext(inter, join, pos);
-	join = ft_strnext(str + pos, join, ft_strlen(join));
+	join = ft_strnext(str + pos, join, ft_strllen(join));
 	return (join);
 }

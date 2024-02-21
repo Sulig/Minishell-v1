@@ -6,11 +6,9 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:17:37 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/14 18:55:54 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:45:08 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../include/libft.h"
 
 static int	ft_accepted(char c, int base)
 {

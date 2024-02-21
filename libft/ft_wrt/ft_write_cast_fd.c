@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:55:07 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/13 13:50:15 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:00:00 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/write.h"
 
 int	ft_putchar_fd(char ch, int fd)
 {

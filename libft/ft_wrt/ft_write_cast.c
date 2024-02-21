@@ -6,11 +6,12 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:55:45 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 18:57:04 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:59:00 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 int	ft_putchar(char ch)
 {

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:27:16 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/13 14:07:48 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:53:46 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,7 @@ void	ft_bzero(void *s, size_t n);
 char	*get_next_line(int fd);
 
 /* PRINT && WRITE */
-int		ft_putchar(char ch);
-int		ft_putnbr(int nbr);
-int		ft_putstr(char *str);
-int		ft_putunsig(size_t nbr, char cast);
-int		ft_printf(char const *str, ...);
-
-int		ft_putchar_fd(char ch, int fd);
-int		ft_putnbr_fd(int nbr, int fd);
-int		ft_putstr_fd(char *str, int fd);
-int		ft_putunsig_fd(size_t nbr, char cast, int fd);
-int		ft_printf_fd(int fd, char const *str, ...);
+#include "write.h"
 
 /* LENGHT */
 size_t	ft_arr_strlen(char **s);
@@ -66,18 +56,7 @@ size_t	ft_cnttoch_out(const char *str, char c);
 size_t	ft_numlen(size_t n, int base);
 
 /* CONVERSIONS */
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
-size_t	ft_atos(const char *str);
-char	*ft_itoa(int n);
-char	*ft_itoa_unsig(size_t n, char *base);
-char	*ft_unsig_tobase(size_t num, char base);
-
-int		ft_toupper(int c);
-int		ft_tolower(int c);
-char	*ft_toupper_all(char *str);
-char	*ft_tolower_all(char *str);
-char	*ft_strcapitalize(char *str);
+#include "converter.h"
 
 /* STRING UTILS */
 char	*ft_strdup(const char *s1);

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 18:44:32 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 16:51:26 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:33:05 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ char	*ft_itoa_unsig(size_t num, char *base)
 	cnt = 0;
 	if (num == 0)
 		cnt++;
-	cnt += ft_numlen(num, ft_strlen(base));
+	cnt += ft_numlen(num, ft_strllen(base));
 	str = ft_calloc(sizeof(char), cnt + 1);
 	if (!str)
 		return (0);
 	while (cnt > 0)
 	{
-		str[--cnt] = base[num % ft_strlen(base)];
-		num /= ft_strlen(base);
+		str[--cnt] = base[num % ft_strllen(base)];
+		num /= ft_strllen(base);
 	}
 	return (str);
 }

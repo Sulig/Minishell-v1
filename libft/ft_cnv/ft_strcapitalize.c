@@ -6,11 +6,9 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:40:25 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 17:41:14 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:48:43 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../include/libft.h"
 
 int	ft_is_cap(char c)
 {

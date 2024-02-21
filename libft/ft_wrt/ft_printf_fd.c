@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:27:49 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/13 13:48:45 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:01:21 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/write.h"
 
 static int	ft_switch_fd(int fd, char cast, va_list args)
 {
