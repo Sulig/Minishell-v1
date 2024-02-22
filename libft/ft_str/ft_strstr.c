@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 17:57:36 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 17:05:19 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:40:35 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <stdlib.h>
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {

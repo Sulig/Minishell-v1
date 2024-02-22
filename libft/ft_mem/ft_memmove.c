@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 13:37:57 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/14 17:43:42 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:46:16 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <stdlib.h>
 
 static void	*ft_cpy(void *dst, const void *src, size_t n)
 {

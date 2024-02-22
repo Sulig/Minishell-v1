@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:06:43 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/20 20:01:55 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:04:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/get_next_line.h"
 
 static char	*gnl_free(char *to_free, char *tmp)
 {

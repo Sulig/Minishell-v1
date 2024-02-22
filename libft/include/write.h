@@ -6,17 +6,18 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:52:24 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/21 20:01:41 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:09:22 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRITE_H
 # define WRITE_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
+/* PRINT && WRITE */
 int		ft_putchar(char ch);
 int		ft_putnbr(int nbr);
 int		ft_putstr(char *str);

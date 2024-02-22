@@ -6,15 +6,15 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:55:09 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 19:06:12 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:27:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/list.h"
 
-int	ft_lstsize(t_list *lst)
+size_t	ft_lstsize(t_list *lst)
 {
-	int		cnt;
+	size_t	cnt;
 
 	cnt = 0;
 	while (lst != 0)

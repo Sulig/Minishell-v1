@@ -6,11 +6,12 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:07:49 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 17:14:08 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:51:46 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/lenght.h"
+#include "../include/memory.h"
 
 char	*ft_strdup(const char *s1)
 {

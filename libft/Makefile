@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/21 20:02:45 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/22 17:12:54 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LST_DIR = ./ft_lst
 # Sorces:
 
 MAK = Makefile
-LIB = $(INC_DIR)/libft.h $(INC_DIR)/converter.h $(INC_DIR)/write.h
+LIB = $(INC_DIR)
 
 GNL_SRC = get_next_line.c
 CNV_SRC = ft_atoi.c ft_atoi_base.c ft_itoa.c ft_strcapitalize.c ft_to_upplow.c
@@ -98,7 +98,7 @@ norm:
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	@echo " Compiling OBJS for $(NAME)"
+	@echo " Compiling OBJS for $(NAME)..\n"
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ): $(OBJ_DIR) $(TMP)
@@ -108,7 +108,7 @@ $(OBJ): $(OBJ_DIR) $(TMP)
 $(NAME): $(OBJ)
 	@echo "\033[1;33m * Creating $(NAME)\033[1;37m\n"
 	ar rc $(NAME) $(OBJ_SRC)
-	@echo "\033[1;32m $(NAME) Compiled Successfully\033[1;97m\n"
+	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[1;97m\n"
 
 # ********************************************************************************* #
 # Clean region

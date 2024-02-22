@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:52:22 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/21 16:35:03 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:58:27 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/lenght.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:30:11 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 16:26:18 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:44:31 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/lenght.h"
 
 void	*ft_free_str(char *str)
 {

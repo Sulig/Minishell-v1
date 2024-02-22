@@ -6,11 +6,13 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:30:58 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 17:04:18 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:53:54 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/lenght.h"
+#include "../include/memory.h"
+#include "../include/string_utils.h"
 
 void	*ft_free_arr(size_t size, char **words)
 {

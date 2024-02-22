@@ -6,12 +6,14 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:02 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/21 19:51:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:12:45 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONVERTER_H
 # define CONVERTER_H
+
+# include <stdlib.h>
 
 /* CONVERSIONS */
 int		ft_atoi(const char *str);

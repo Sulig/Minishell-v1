@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 19:45:32 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 17:10:46 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:39:25 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <stdlib.h>
 
 /*
  * Compares str & cmp

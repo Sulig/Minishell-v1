@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/converter.h"
 #include "../include/write.h"
 
 int	ft_putchar_fd(char ch, int fd)

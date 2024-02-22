@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/list.h"
 
 static void	ft_nexttonull(t_list *tonull, int cnt)
 {

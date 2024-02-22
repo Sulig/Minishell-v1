@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 17:30:06 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 16:36:08 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:41:57 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 17:12:32 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 17:04:51 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:53:13 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/lenght.h"
 
 char	*ft_strcut(char *str, char cut, char mode, char inc)
 {

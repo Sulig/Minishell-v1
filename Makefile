@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/21 19:43:22 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/22 18:52:26 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,9 @@ PER_DIR = $(SRC_DIR)/print_errors
 # Sorces:
 
 LIBFT = $(LIB_DIR)/libft.a
-MAK = Makefile
+LIBS = $(INC_DIR)
 
-LIBS = $(INC_DIR)/minishell_general_library.h $(INC_DIR)/colors.h
+MAK = Makefile
 
 SRC_SRC = minishell_main.c
 PER_SRC = print_err_args.c
