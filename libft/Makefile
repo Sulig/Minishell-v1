@@ -105,7 +105,9 @@ $(OBJ): $(OBJ_DIR) $(TMP)
 	@mv -f $(TMP) $(OBJ_DIR)
 	@echo "\033[1;35m\n OBJS for $(NAME) created succesfuly\n"
 
-$(NAME): $(OBJ)
+$(OBJ_SRC): $(OBJ)
+
+$(NAME): $(OBJ_SRC)
 	@echo "\033[1;33m * Creating $(NAME)\033[1;37m\n"
 	ar rc $(NAME) $(OBJ_SRC)
 	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[1;97m\n"

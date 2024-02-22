@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/22 18:52:26 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/22 20:04:01 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,11 @@ ACT_DIR = ./
 OBJ_DIR = ./obj
 LIB_DIR = ./libft
 INC_DIR = ./include
+
+# Minishell SRC Directories:
 SRC_DIR = ./src
 PER_DIR = $(SRC_DIR)/print_errors
+UTL_DIR = $(SRC_DIR)/utils
 # ------------------- #
 # Sorces:
 
@@ -33,8 +36,9 @@ LIBS = $(INC_DIR)
 
 MAK = Makefile
 
-SRC_SRC = minishell_main.c
+SRC_SRC = minishell_main.c minishell_welcome.c
 PER_SRC = print_err_args.c
+UTL_SRC = print_all_arrstr.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_SRC))
 SRC += $(addprefix $(PER_DIR)/, $(PER_SRC))
@@ -103,10 +107,32 @@ $(OBJ): $(OBJ_DIR) $(TMP)
 	@mv -f $(TMP) $(OBJ_DIR)
 	@echo "\033[1;35m\n OBJS for $(NAME) created succesfuly\n"
 
-$(NAME): $(MAK) $(LIBFT) $(OBJ)
+$(OBJ_SRC): $(OBJ)
+
+$(NAME): $(MAK) $(LIBFT) $(OBJ_SRC)
 	@echo "\033[1;93m * Making $(NAME) -->\033[1;97m\n"
 	$(CC) $(LIBFT) $(OBJ_SRC) -o $(NAME)
 	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[1;97m\n"
+
+# ********************************************************************************* #
+# ******************************************************************************* #
+# Debuging region:
+
+debug: $(NAME)
+	@echo " ~ Debugging ./$(NAME)"
+	@lldb $(NAME)
+
+# ------------------
+
+leaks: $(NAME)
+	@echo " ~ Running leaks -atExit -- ./$(NAME)"
+	@leaks -atExit -- ./$(NAME)
+
+# ------------------
+
+val: $(NAME)
+	@echo " ~ Running valgrind ./$(NAME)"
+	@valgrind ./$(NAME)
 
 # ********************************************************************************* #
 # Clean region
@@ -121,6 +147,7 @@ clean:
 fclean: clean
 	@make -s fclean -C $(LIB_DIR)
 	@/bin/rm -f $(NAME)
+	@/bin/rm -frd $(NAME).dSYM
 	@find . -name ".DS_Store" -type f -delete
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
@@ -129,5 +156,5 @@ clear: fclean
 
 re: fclean all
 # -------------------- #
-.PHONY: all author clean clear fclean help norm re
+.PHONY: all author clean clear debug fclean help leaks norm re run val
 # ********************************************************************************** #

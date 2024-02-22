@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_main.c                                   :+:      :+:    :+:   */
+/*   print_all_arrstr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 17:44:50 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/22 20:04:06 by sadoming         ###   ########.fr       */
+/*   Created: 2024/02/22 19:29:27 by sadoming          #+#    #+#             */
+/*   Updated: 2024/02/22 20:02:57 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell_general_library.h"
+#include "../../include/minishell_general_library.h"
 
-int	main(int argc, char **args, char **env)
+void	print_all_arrstr(char **arr)
 {
-	if (argc != 1 || (ft_arr_strlen(args) > 2))
-		print_err_args();
-	print_minishell_welcome(env);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	if (!ft_arr_strlen(arr))
+		ft_printf_fd(1, "Null array\n");
+	else
+	{
+		while (arr[i])
+		{
+			ft_printf_fd(1, "Pos |%u|: %s\n", i, arr[i]);
+			i++;
+		}
+	}
 }
