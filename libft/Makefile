@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/22 17:12:54 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/27 18:45:23 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,25 +16,28 @@ NAME = libft.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
+INCLUDE = -I $(INC_DIR)/
 # ------------------ #
 # Directories:
 
-ACT_DIR = ./
 OBJ_DIR = ./obj
 INC_DIR = ./include
-GNL_DIR = ./ft_gnl
-CNV_DIR = ./ft_cnv
-MEM_DIR = ./ft_mem
-STR_DIR = ./ft_str
-WRT_DIR = ./ft_wrt
 
-LST_DIR = ./ft_lst
+# Libft SRC Directories:
+SRC_DIR = ./src/
+GNL_DIR = $(SRC_DIR)ft_gnl
+CNV_DIR = $(SRC_DIR)ft_cnv
+MEM_DIR = $(SRC_DIR)ft_mem
+STR_DIR = $(SRC_DIR)ft_str
+WRT_DIR = $(SRC_DIR)ft_wrt
 
+LST_DIR = $(SRC_DIR)ft_lst
 # ------------------- #
 # Sorces:
+MAK = Makefile #This Makefile
 
-MAK = Makefile
-LIB = $(INC_DIR)
+# HEADERS:
+HDR = $(INC_DIR)/
 
 GNL_SRC = get_next_line.c
 CNV_SRC = ft_atoi.c ft_atoi_base.c ft_itoa.c ft_strcapitalize.c ft_to_upplow.c
@@ -54,11 +57,7 @@ SRC += $(addprefix $(STR_DIR)/, $(STR_SRC))
 SRC += $(addprefix $(WRT_DIR)/, $(WRT_SRC))
 SRC += $(addprefix $(LST_DIR)/, $(LST_SRC))
 
-RSC = $(GNL_SRC) $(CNV_SRC) $(WRT_SRC) $(MEM_SRC) $(STR_SRC) $(LST_SRC)
-
-TMP = $(SRC:.c=.o)
-OBJ = $(addprefix $(OBJ_DIR)/, $(ACT_DIR:.c=.o))
-OBJ_SRC = $(addprefix $(OBJ_DIR)/, $(RSC:.c=.o))
+OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)/%.o, $(SRC))
 # ******************************************************************************* #
 #-------------------------------------------------------------#
 all: $(NAME)
@@ -94,32 +93,20 @@ norm:
 # ******************************************************************************* #
 # Compiling Region:
 
-%.o: %.c $(LIB) $(MAK)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)%.c $(HDR) $(MAK)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ $(INCLUDE)
 
-$(OBJ_DIR):
-	@echo " Compiling OBJS for $(NAME)..\n"
-	@mkdir -p $(OBJ_DIR)
-
-$(OBJ): $(OBJ_DIR) $(TMP)
-	@mv -f $(TMP) $(OBJ_DIR)
-	@echo "\033[1;35m\n OBJS for $(NAME) created succesfuly\n"
-
-$(OBJ_SRC): $(OBJ)
-
-$(NAME): $(OBJ_SRC)
-	@echo "\033[1;33m * Creating $(NAME)\033[1;37m\n"
-	ar rc $(NAME) $(OBJ_SRC)
-	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[1;97m\n"
+$(NAME): $(MAK) $(HDR) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
+	@echo "\033[0;32m $(NAME) Compiled Successfully\033[0;37m\n"
 
 # ********************************************************************************* #
 # Clean region
 
 clean:
 	@/bin/rm -frd $(OBJ_DIR)
-	@/bin/rm -f $(TMP)
 	@echo "\033[1;34m\n All obj removed\033[1;97m\n"
-
 
 fclean: clean
 	@/bin/rm -f $(NAME)

@@ -6,17 +6,24 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:57:47 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/23 16:01:58 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:54:32 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell_general_library.h"
+
+void	print_logo(void)
+{
+	ft_printf(Y);
+	ft_printf("     ■■■■■\n   ■■■■■■■■■\n");
+}
 
 void	print_minishell_welcome(char **env)
 {
 	char	*logname;
 	size_t	color;
 
+	logname = NULL;
 	logname = ft_search_str(env, "LOGNAME");
 	logname = logname + ft_cnttoch_in(logname, '=');
 	if (!logname)
@@ -24,6 +31,8 @@ void	print_minishell_welcome(char **env)
 	color = logname[0] + logname[1];
 	if (color >= 232 && color <= 240)
 		color = logname[0];
-	ft_printf("\033[38;5;%um\t", color);
-	ft_printf("~ Gretings %s ~\n", logname);
+	print_logo();
+	ft_printf("\n\033[38;5;%um\t", color);
+	ft_printf("~ Gretings %s ~\n\n", logname);
+	ft_printf(D);
 }

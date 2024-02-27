@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/22 20:04:01 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/27 19:54:54 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ NAME = minishell
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
+READLINE = -lreadline -ltermcap #-lhistory
+INCLUDE = -I $(INC_DIR)/ -I $(LIB_DIR)/include/ 
 # ------------------ #
 # Directories:
 
-ACT_DIR = ./
 OBJ_DIR = ./obj
 LIB_DIR = ./libft
 INC_DIR = ./include
@@ -30,24 +31,22 @@ PER_DIR = $(SRC_DIR)/print_errors
 UTL_DIR = $(SRC_DIR)/utils
 # ------------------- #
 # Sorces:
+MAK = Makefile # This Makefile
+LIBFT = $(LIB_DIR)/libft.a # The Libft
 
-LIBFT = $(LIB_DIR)/libft.a
-LIBS = $(INC_DIR)
+# HEADERS
+HEADERS = $(INC_DIR)/ $(LIB_DIR)/include/
 
-MAK = Makefile
+# MINISHELL SRC ->
 
 SRC_SRC = minishell_main.c minishell_welcome.c
-PER_SRC = print_err_args.c
+PER_SRC = print_common_errors.c
 UTL_SRC = print_all_arrstr.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_SRC))
 SRC += $(addprefix $(PER_DIR)/, $(PER_SRC))
 
-RSC = $(SRC_SRC) $(PER_SRC)#add other _SRC
-
-TMP = $(SRC:.c=.o)
-OBJ = $(addprefix $(OBJ_DIR)/, $(ACT_DIR:.c=.o))
-OBJ_SRC = $(addprefix $(OBJ_DIR)/, $(RSC:.c=.o))
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 # ******************************************************************************* #
 #-------------------------------------------------------------#
 all: $(NAME)
@@ -91,31 +90,26 @@ run: all
 # ******************************************************************************* #
 # Compiling Region:
 
+# LIBFT ->
 $(LIBFT):
-	@echo "\033[1;93m\n * Compiling Libft -->\033[1;97m\n"
+	@echo "\033[0;33m\n * Compiling Libft -->\033[0;37m\n"
 	@make -s -C $(LIB_DIR)
 	@echo "\033[1;37m~ **************************************** ~\n"
+# ----------------------------------------
+# MINISHELL ->
 
-%.o: %.c $(LIB) $(MAK)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT)
+	@echo "\033[0;37m Compiling...: $<"
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
-$(OBJ_DIR):
-	@echo " Compiling OBJS for $(NAME)\033[0;97m\n"
-	@mkdir -p $(OBJ_DIR)
-
-$(OBJ): $(OBJ_DIR) $(TMP)
-	@mv -f $(TMP) $(OBJ_DIR)
-	@echo "\033[1;35m\n OBJS for $(NAME) created succesfuly\n"
-
-$(OBJ_SRC): $(OBJ)
-
-$(NAME): $(MAK) $(LIBFT) $(OBJ_SRC)
-	@echo "\033[1;93m * Making $(NAME) -->\033[1;97m\n"
-	$(CC) $(LIBFT) $(OBJ_SRC) -o $(NAME)
-	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[1;97m\n"
+$(NAME): $(MAK) $(LIBFT) $(OBJS) $(HEADERS)
+	@echo "\033[1;93m\n * Making $(NAME) -->\033[0;37m\n"
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(READLINE) -o $(NAME)
+	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[0;37m\n"
 
 # ********************************************************************************* #
-# ******************************************************************************* #
+# ********************************************************************************* #
 # Debuging region:
 
 debug: $(NAME)
@@ -140,7 +134,6 @@ val: $(NAME)
 clean:
 	@make -s clean -C $(LIB_DIR)
 	@/bin/rm -frd $(OBJ_DIR)
-	@/bin/rm -f $(TMP)
 	@echo "\033[1;34m\n All obj removed\033[1;97m\n"
 
 

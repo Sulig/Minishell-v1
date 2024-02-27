@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   print_common_errors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 16:35:01 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/12 19:05:19 by sadoming         ###   ########.fr       */
+/*   Created: 2024/02/27 18:53:09 by sadoming          #+#    #+#             */
+/*   Updated: 2024/02/27 19:54:40 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/list.h"
+#include "../../include/print_errors.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	print_err_args(void)
 {
-	t_list	*last;
+	ft_printf_fd(2, Y);
+	ft_printf_fd(2, "Please don't introduce arguments in ");
+	ft_printf_fd(2, "minishell \nIt will not be interpreted\n");
+	exit(1);
+}
 
-	last = ft_lstlast(*lst);
-	if (last == NULL && new)
-		*lst = new;
-	if (last && new)
-		last->next = new;
+void	print_err_readline(void)
+{
+	ft_printf_fd(2, R);
+	ft_printf_fd(2, "An error on readline has ocurred\n");
+	ft_printf_fd(2, D);
 }

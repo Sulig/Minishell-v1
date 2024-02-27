@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_err_args.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 19:16:20 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/21 19:40:19 by sadoming         ###   ########.fr       */
+/*   Created: 2023/08/21 16:35:01 by sadoming          #+#    #+#             */
+/*   Updated: 2024/02/23 18:24:42 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/include/libft.h"
-#include "../../include/print_errors.h"
+#include "../include/list.h"
 
-void	print_err_args(void)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	ft_printf_fd(2, R);
-	ft_printf_fd(2, "Please don't introduce arguments in ");
-	ft_printf_fd(2, "minishell \nIt will not be interpreted\n");
-	exit(1);
+	t_list	*last;
+
+	last = ft_lstlast(*lst);
+	if (last == NULL && new)
+		*lst = new;
+	if (last && new)
+		last->next = new;
 }
