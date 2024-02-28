@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_general_library.h                        :+:      :+:    :+:   */
+/*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 17:26:45 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/28 19:57:14 by sadoming         ###   ########.fr       */
+/*   Created: 2024/02/28 16:45:37 by sadoming          #+#    #+#             */
+/*   Updated: 2024/02/28 19:57:18 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_GENERAL_LIBRARY_H
-# define MINISHELL_GENERAL_LIBRARY_H
-
-# include "../libft/include/libft.h"
-# include "print_errors.h"
-# include "colors.h"
-# include <fcntl.h>
-
 # include <readline/readline.h>
 # include <readline/history.h>
+# include "../include/minishell_general_library.h"
 
-void	print_minishell_welcome(char **env);
-void	exit_minishell(void);
-void	start_signals(void);
+void	exit_minishell(void)
+{
+	ft_printf("exit\n");
+	clear_history();
+	exit(0);
+}
 
-char	*ft_readline(void);
+char	*ft_readline(void)
+{
+	char	*line;
+	char	*prompt;
 
-/* UTILS FOR DEBBUG */
-void	print_all_arrstr(char **arr);
-
-#endif
+	prompt = "minishell$ ";
+	line = readline(prompt);
+	if (!line)
+		exit_minishell();
+	if (*line)
+		add_history(line);
+	return (line);
+}

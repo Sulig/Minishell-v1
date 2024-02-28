@@ -6,23 +6,36 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:44:50 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/27 19:54:57 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:20:07 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell_general_library.h"
 
-int	main(int argc, char **args, char **env)
+void	minishell(char **env)
 {
 	char	*line;
 
+	(void) env;
+	while (4)
+	{
+		start_signals();
+		line = ft_readline();
+		//tokenize
+		free(line);
+		//parser \\> error handler case " ' ...
+		//expand, split (echo " case "), quote removal
+		//Redirect \\> error on filedescriptors
+		//execute \\> error execution
+		//exit status or contiue in loop
+	}
+}
+
+int	main(int argc, char **args, char **env)
+{
 	if (argc != 1 || (ft_arr_strlen(args) > 2))
 		print_err_args();
 	print_minishell_welcome(env);
-	line = readline("prompt$\t");
-	if (!line)
-		print_err_readline();
-	else
-		free(line);
+	minishell(env);
 	return (0);
 }

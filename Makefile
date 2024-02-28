@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/27 19:54:54 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/28 19:57:23 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,13 @@ HEADERS = $(INC_DIR)/ $(LIB_DIR)/include/
 
 # MINISHELL SRC ->
 
-SRC_SRC = minishell_main.c minishell_welcome.c
+SRC_SRC = minishell_main.c minishell_welcome.c ft_readline.c
 PER_SRC = print_common_errors.c
-UTL_SRC = print_all_arrstr.c
+UTL_SRC = print_all_arrstr.c signals.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_SRC))
 SRC += $(addprefix $(PER_DIR)/, $(PER_SRC))
+SRC += $(addprefix $(UTL_DIR)/, $(UTL_SRC))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 # ******************************************************************************* #
@@ -98,12 +99,12 @@ $(LIBFT):
 # ----------------------------------------
 # MINISHELL ->
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT) $(HEADERS)
 	@echo "\033[0;37m Compiling...: $<"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
-$(NAME): $(MAK) $(LIBFT) $(OBJS) $(HEADERS)
+$(NAME): $(MAK) $(HEADERS) $(LIBFT) $(OBJS)
 	@echo "\033[1;93m\n * Making $(NAME) -->\033[0;37m\n"
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(READLINE) -o $(NAME)
 	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[0;37m\n"
