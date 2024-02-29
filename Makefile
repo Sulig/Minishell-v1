@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
+#    By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/27 19:54:54 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/29 15:12:07 by amagnell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ NAME = minishell
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
+CPPFLAGS = -MMD -MP
+LDFLAGS = $(addprefix -L, $(dir $(LIBFT)))
 READLINE = -lreadline -ltermcap #-lhistory
 INCLUDE = -I $(INC_DIR)/ -I $(LIB_DIR)/include/ 
 # ------------------ #
@@ -30,9 +32,10 @@ SRC_DIR = ./src
 PER_DIR = $(SRC_DIR)/print_errors
 UTL_DIR = $(SRC_DIR)/utils
 # ------------------- #
-# Sorces:
+# Sources:
 MAK = Makefile # This Makefile
 LIBFT = $(LIB_DIR)/libft.a # The Libft
+LIB_MAK = $(LIB_DIR)/Makefile
 
 # HEADERS
 HEADERS = $(INC_DIR)/ $(LIB_DIR)/include/
@@ -47,9 +50,12 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_SRC))
 SRC += $(addprefix $(PER_DIR)/, $(PER_SRC))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
+
+DEPS = $(OBJS:%.o=%d)
+-include $(DEPS)
 # ******************************************************************************* #
 #-------------------------------------------------------------#
-all: $(NAME)
+all: $(LIBFT) $(NAME) 
 #-------------------------------------------------------------#
 #-------------------------------------------------------------#
 help:
@@ -91,7 +97,7 @@ run: all
 # Compiling Region:
 
 # LIBFT ->
-$(LIBFT):
+$(LIBFT): 
 	@echo "\033[0;33m\n * Compiling Libft -->\033[0;37m\n"
 	@make -s -C $(LIB_DIR)
 	@echo "\033[1;37m~ **************************************** ~\n"
@@ -101,16 +107,16 @@ $(LIBFT):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT)
 	@echo "\033[0;37m Compiling...: $<"
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ $(INCLUDE)
 
-$(NAME): $(MAK) $(LIBFT) $(OBJS) $(HEADERS)
+$(NAME): $(LIB_MAK) $(MAK) $(LIBFT) $(OBJS) $(HEADERS)
 	@echo "\033[1;93m\n * Making $(NAME) -->\033[0;37m\n"
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(READLINE) -o $(NAME)
+	$(CC) $(LDFLAGS) $(CFLAGS) $(OBJS) -l ft $(READLINE) -o $(NAME)
 	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[0;37m\n"
 
 # ********************************************************************************* #
 # ********************************************************************************* #
-# Debuging region:
+# Debugging region:
 
 debug: $(NAME)
 	@echo " ~ Debugging ./$(NAME)"

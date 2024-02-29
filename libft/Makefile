@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
+#    By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/27 18:45:23 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/29 15:11:55 by amagnell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = libft.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
+CPPFLAGS = -MMD -MP
 INCLUDE = -I $(INC_DIR)/
 # ------------------ #
 # Directories:
@@ -58,6 +59,9 @@ SRC += $(addprefix $(WRT_DIR)/, $(WRT_SRC))
 SRC += $(addprefix $(LST_DIR)/, $(LST_SRC))
 
 OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)/%.o, $(SRC))
+
+DEPS = $(OBJS:%.o=%.d)
+-include $(DEPS)
 # ******************************************************************************* #
 #-------------------------------------------------------------#
 all: $(NAME)
@@ -95,7 +99,7 @@ norm:
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)%.c $(HDR) $(MAK)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ $(INCLUDE)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDE) -c $< -o $@ $(INCLUDE)
 
 $(NAME): $(MAK) $(HDR) $(OBJS)
 	@ar rc $(NAME) $(OBJS)
