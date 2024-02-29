@@ -3,15 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
+/*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:45:37 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/28 19:57:18 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:07:16 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <readline/readline.h>
-# include <readline/history.h>
 # include "../include/minishell_general_library.h"
 
 void	exit_minishell(void)
