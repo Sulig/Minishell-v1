@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:57:47 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/27 19:54:32 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:58:46 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell_general_library.h"
+#include "../include/minishell.h"
 
 void	print_logo(void)
 {

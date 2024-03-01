@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:53:09 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/28 18:20:06 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:59:15 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/print_errors.h"
+#include "../../include/minishell.h"
 
 void	print_err_args(void)
 {

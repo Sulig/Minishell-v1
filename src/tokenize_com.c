@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_errors.h                                     :+:      :+:    :+:   */
+/*   tokenize_com.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 19:36:15 by sadoming          #+#    #+#             */
-/*   Updated: 2024/02/28 18:20:22 by sadoming         ###   ########.fr       */
+/*   Created: 2024/02/29 17:45:41 by sadoming          #+#    #+#             */
+/*   Updated: 2024/03/01 16:10:24 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_ERRORS_H
-# define PRINT_ERRORS_H
+#include "../include/minishell.h"
 
-# include "../libft/include/libft.h"
-# include "colors.h"
+void	split_intotokens(char *command)
+{
+	char	**arr;
 
-void	print_err_args(void);
-
-#endif
+	arr = ft_split(command, ' ');
+	print_all_arrstr(arr);
+	arr = ft_auto_free_arr(arr);
+}
