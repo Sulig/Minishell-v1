@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readline.c                                      :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 16:45:37 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/01 18:42:40 by sadoming         ###   ########.fr       */
+/*   Created: 2024/03/01 18:43:35 by sadoming          #+#    #+#             */
+/*   Updated: 2024/03/01 19:20:19 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-void	exit_minishell(void)
+int	ft_echo(char *n, char *message)
 {
-	ft_printf_fd(2, "minishell$: exit\n");
-	rl_clear_history();
-	exit(0);
-}
+	int	tmp;
+	int	ret;
+	int	save;
 
-char	*ft_readline(void)
-{
-	char	*line;
-	char	*prompt;
-
-	prompt = "minishell$: ";
-	line = readline(prompt);
-	if (!line && rl_line_buffer)
-		exit_minishell();
-	if (ft_strllen(line))
-		add_history(line);
-	return (line);
+	ret = 0;
+	tmp = 0;
+	save = 1;
+	if (ft_strllen(n))
+	{
+		if (!my_strcmp(n, "-n"))
+			tmp = ft_printf("%s", n);
+		else
+			save = 0;
+	}
+	if (ft_strllen(message))
+		ret = ft_printf("%s", message);
+	if (save)
+		save = ft_printf("\n");
+	if (save == -1 || tmp == -1 || ret == -1)
+		return (1);
+	return (0);
 }

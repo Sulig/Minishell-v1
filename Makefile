@@ -6,7 +6,7 @@
 #    By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/02/29 20:00:41 by sadoming         ###   ########.fr        #
+#    Updated: 2024/03/01 19:20:07 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,25 +18,29 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 CPPFLAGS = -MMD -MP
 LDFLAGS = $(addprefix -L, $(dir $(LIBFT)))
-READLINE = ./readline/libreadline.a
-HISTORY = ./readline/libhistory.a 
 INCLUDE = -I ./readline/ -I $(INC_DIR)/ -I $(LIB_DIR)/include/ 
 # ------------------ #
 # Directories:
 
 OBJ_DIR = ./obj
 LIB_DIR = ./libft
+RDL_DIR = ./readline
 INC_DIR = ./include
 
 # Minishell SRC Directories:
 SRC_DIR = ./src
+BLT_DIR = $(SRC_DIR)/builtins
 PER_DIR = $(SRC_DIR)/print_errors
 UTL_DIR = $(SRC_DIR)/utils
 # ------------------- #
 # Sources:
 MAK = Makefile # This Makefile
+
 LIBFT = $(LIB_DIR)/libft.a # The Libft
-#LIB_MAK = $(LIB_DIR)/Makefile
+
+# Readline libraries ->
+READLINE = ./readline/libreadline.a
+HISTORY = ./readline/libhistory.a
 
 # HEADERS
 HEADERS = $(INC_DIR)/ $(LIB_DIR)/include/
@@ -44,10 +48,12 @@ HEADERS = $(INC_DIR)/ $(LIB_DIR)/include/
 # MINISHELL SRC ->
 
 SRC_SRC = minishell_main.c minishell_welcome.c ft_readline.c tokenize_com.c
+BLT_SRC = echo.c 
 PER_SRC = print_common_errors.c
 UTL_SRC = print_all_arrstr.c signals.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_SRC))
+SRC += $(addprefix $(BLT_DIR)/, $(BLT_SRC))
 SRC += $(addprefix $(PER_DIR)/, $(PER_SRC))
 SRC += $(addprefix $(UTL_DIR)/, $(UTL_SRC))
 
@@ -105,6 +111,13 @@ $(LIBFT):
 	@make -s -C $(LIB_DIR)
 	@echo "\033[1;37m~ **************************************** ~\n"
 # ----------------------------------------
+# READLINE ->
+
+$(READLINE):
+	@echo "\033[0;33m * Compiling Readline -->\033[0;37m\n"
+	@make -s -C $(RDL_DIR)
+	@echo "\033[1;37m~ **************************************** ~\n"
+# ----------------------------------------
 # MINISHELL ->
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT) $(HEADERS)
@@ -112,7 +125,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT) $(HEADERS)
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -D READLINE_LIBRARY=1 -c $< -o $@ $(INCLUDE)
 
-$(NAME): $(MAK) $(HEADERS) $(LIBFT) $(OBJS)
+$(NAME): $(MAK) $(HEADERS) $(LIBFT) $(READLINE) $(OBJS)
 	@echo "\033[1;93m\n * Making $(NAME) -->\033[0;37m\n"
 	$(CC) $(LDFLAGS) $(CFLAGS) $(OBJS) -l ft $(READLINE) $(HISTORY) -ltermcap -lreadline -o $(NAME)
 	@echo "\033[1;32m\n $(NAME) Compiled Successfully\033[0;37m\n"
@@ -142,6 +155,7 @@ val: $(NAME)
 
 clean:
 	@make -s clean -C $(LIB_DIR)
+	@make -s clean -C $(RDL_DIR)
 	@/bin/rm -frd $(OBJ_DIR)
 	@echo "\033[1;34m\n All obj removed\033[1;97m\n"
 

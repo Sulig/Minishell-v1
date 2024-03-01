@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:56:43 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/01 16:00:09 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:20:14 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	print_err_args(void);
 
 /* FNT TO/IN TEST*/
 void	split_intotokens(char *command);
+
+/* BUILTINS */
+int		ft_echo(char *n, char *message);
 
 /* UTILS FOR DEBBUG */
 void	print_all_arrstr(char **arr);

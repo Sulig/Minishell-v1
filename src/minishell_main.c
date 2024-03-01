@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:44:50 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/01 17:09:06 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:20:10 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	minishell(char **env)
 	{
 		start_signals();
 		line = ft_readline();
-		//tokenize 
+		//tokenize \\> error handler case " ' 
 		split_intotokens(line);
 		free(line);
-		//parser \\> error handler case " ' ...
+		//parser \\> error handler case ...
 		//expand, split (echo " case "), quote removal
 		//Redirect \\> error on filedescriptors
 		//execute \\> error execution
