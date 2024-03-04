@@ -6,7 +6,7 @@
 #    By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 12:00:39 by sadoming          #+#    #+#              #
-#    Updated: 2024/03/01 19:20:07 by sadoming         ###   ########.fr        #
+#    Updated: 2024/03/04 19:49:19 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ HEADERS = $(INC_DIR)/ $(LIB_DIR)/include/
 
 # MINISHELL SRC ->
 
-SRC_SRC = minishell_main.c minishell_welcome.c ft_readline.c tokenize_com.c
+SRC_SRC = minishell_main.c minishell_welcome.c ft_readline.c tokenize_com.c\
+		  manage_structs.c
 BLT_SRC = echo.c 
 PER_SRC = print_common_errors.c
 UTL_SRC = print_all_arrstr.c signals.c
@@ -88,9 +89,13 @@ author:
 #-------------------------------------------------------------#
 norm:
 	@echo "\n\033[1;93m~ Norminette:\n"
-	@norminette -R CheckForbiddenSourceHeader
+	@norminette -R CheckForbiddenSourceHeader $(LIB_DIR)
+	@norminette -R CheckForbiddenSourceHeader $(HEADERS)
+	@norminette -R CheckForbiddenSourceHeader $(SRC_DIR)
 	@echo "\n~~~~~~~~~~~~~~~~~~~~~~\n"
-	@norminette
+	@norminette $(LIB_DIR)
+	@norminette $(HEADERS)
+	@norminette $(SRC_DIR)
 	@echo "\033[1;32m\n ~ Norminette:\t~ OK\n"
 	@echo "~~~~~~~~~~~~~~~~~~~~~~\n"
 #-------------------------------------------------------------#
@@ -115,6 +120,7 @@ $(LIBFT):
 
 $(READLINE):
 	@echo "\033[0;33m * Compiling Readline -->\033[0;37m\n"
+	@echo " Plesase wait a bit\n"
 	@make -s -C $(RDL_DIR)
 	@echo "\033[1;37m~ **************************************** ~\n"
 # ----------------------------------------
@@ -148,7 +154,7 @@ leaks: $(NAME)
 
 val: $(NAME)
 	@echo " ~ Running valgrind ./$(NAME)"
-	@valgrind ./$(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 # ********************************************************************************* #
 # Clean region
