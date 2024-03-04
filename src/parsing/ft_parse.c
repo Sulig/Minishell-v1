@@ -1,35 +1,57 @@
 
 #include "../../include/minishell_general_library.h"
 
-char *ft_qt_check(char *line, char c)
+ft_pipe_check(char *line)
 {
-    int     qt_start;
-    int     qt_end;
+    int i;
 
-    qt_start = 0;
-    while (line[qt_start])
-    {
-        qt_end = qt_start;
-        if (line[qt_start] == c)
-        {
-            while(line[qt_end])
-            {
-                if (line[qt_end] == c)
-                    return (0); 
-                qt_end++;
-            }
-        }
-        qt_start++;
-    }
-    return(1);
-}
-ft_pipe_check()
-{
+    i = 0;
+    while ((line[i] >= 9 && line[i] <= 13) || line[i] == ' ')
+        i++;
+    if (line[i] == '|')
+        //error ft and exit form there;
+    while (line[i] != '|' && line[i])
+        i++;
+    if (line[i] == '|')
+        i++;
+    while ((line[i] >= 9 && line[i] <= 13) || line[i] == ' ')
+        i++;
+    if (line[])
 }
 
-ft_parse(char *line)
+int	ft_qt_check(char *line, char c)
 {
-    //while loop to check for quotes
-        //if quote found start ft_qt_check
-    //check pipes
+	int	qt_end;
+	
+	qt_end = 1;
+	while(line[qt_end])
+	{
+		if (line[qt_end] == c)
+			return (0);
+		qt_end++;
+	}
+	// print quote error and exit
+}
+
+int	ft_parse(char *line)
+{
+	int		i;
+	char	c;
+	
+	i = 0;
+	c = 0;
+	while (line[i])
+	{
+		if (line[i] == '"' || line == "'")
+		{
+			c = line[i];
+			ft_qt_check(line[i], c);
+			while (line[i] != c)
+				i++;
+			i++;
+		}
+		if (line[i] == '|')
+			ft_pipe_check(line);
+		i++;
+	}
 }
