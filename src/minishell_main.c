@@ -6,13 +6,13 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:44:50 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/04 19:49:31 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:13:57 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	minishell(char **env, t_minishell *tshell)
+void	minishell(char **env, t_shell *tshell)
 {
 	char	*line;
 
@@ -24,7 +24,7 @@ void	minishell(char **env, t_minishell *tshell)
 		if (!line)
 			exit_minishell(tshell);
 		//tokenize \\> error handler case " ' 
-		split_intotokens(line);
+		tshell = split_intotokens(line, tshell);
 		free(line);
 		//parser \\> error handler case ...
 		//expand, split (echo " case "), quote removal
@@ -37,14 +37,14 @@ void	minishell(char **env, t_minishell *tshell)
 
 int	main(int argc, char **args, char **env)
 {
-	t_minishell	*t_minishell;
+	t_shell	*t_shell;
 
-	t_minishell = NULL;
+	t_shell = NULL;
 	if (argc != 1 || (ft_arr_strlen(args) > 2))
 		print_err_args();
 	print_minishell_welcome(env);
-	t_minishell = init_tshell(t_minishell, env);
-	minishell(env, t_minishell);
-	t_minishell = free_tshell(t_minishell);
+	t_shell = init_tshell(t_shell, env);
+	minishell(env, t_shell);
+	t_shell = free_tshell(t_shell);
 	return (0);
 }

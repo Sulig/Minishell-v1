@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:15:16 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/04 19:49:34 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:36:04 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ enum	e_toktype
 	ARGS,
 	ENV,
 	OPTION,
+	D_QUOTE,
+	U_QUOTE,
 	PIPE,
 	REDIR_IN,
 	REDIR_OUT,
@@ -37,11 +39,11 @@ typedef struct s_token
 	struct s_token	*next;
 }					t_token;
 
-typedef struct s_minishell
+typedef struct s_shell
 {
 	char		**env;
 	t_token		*tokens;
 	size_t		sizeof_tok;
-}				t_minishell;
+}				t_shell;
 
 #endif

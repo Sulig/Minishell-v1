@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:56:43 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/04 19:49:24 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:13:42 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,24 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-void		print_minishell_welcome(char **env);
-void		exit_minishell(t_minishell *tshell);
-void		start_signals(void);
+void	print_minishell_welcome(char **env);
+void	exit_minishell(t_shell *tshell);
+void	start_signals(void);
 
-char		*ft_readline(void);
+char	*ft_readline(void);
 
-void		print_err_args(void);
+void	print_err_args(void);
 
 /* TO TEST OR TESTING */
-void		split_intotokens(char *command);
+t_shell	*split_intotokens(char *command, t_shell *tshell);
 
-void		*free_tshell(t_minishell *tshell);
-t_minishell	*init_tshell(t_minishell *tshell, char **env);
+void	*free_tshell(t_shell *tshell);
+t_shell	*init_tshell(t_shell *tshell, char **env);
 
 /* BUILTINS */
-int			ft_echo(char *n, char *message);
+int		ft_echo(char *n, char *message);
 
 /* UTILS FOR DEBBUG */
-void		print_all_arrstr(char **arr);
+void	print_all_arrstr(char **arr);
 
 #endif

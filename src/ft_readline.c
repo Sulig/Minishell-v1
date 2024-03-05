@@ -6,13 +6,13 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:45:37 by sadoming          #+#    #+#             */
-/*   Updated: 2024/03/04 19:17:34 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:31:10 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	exit_minishell(t_minishell *tshell)
+void	exit_minishell(t_shell *tshell)
 {
 	rl_clear_history();
 	tshell = free_tshell(tshell);
