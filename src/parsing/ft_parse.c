@@ -3,20 +3,8 @@
 
 ft_pipe_check(char *line)
 {
-    int i;
-
-    i = 0;
-    while ((line[i] >= 9 && line[i] <= 13) || line[i] == ' ')
-        i++;
-    if (line[i] == '|')
-        //error ft and exit form there;
-    while (line[i] != '|' && line[i])
-        i++;
-    if (line[i] == '|')
-        i++;
-    while ((line[i] >= 9 && line[i] <= 13) || line[i] == ' ')
-        i++;
-    if (line[])
+	//this is stupid
+	//here it's already tokens so just check that there's a token which is not a space
 }
 
 int	ft_qt_check(char *line, char c)
